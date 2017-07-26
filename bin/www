@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+let app = require('../app');
+const debug = require('debug')('liri:server');
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+
+const twit = require('twit');
+const request = require('request');
+const fs = require('fs');
+
+const twitConfig = require('./config/twitterConfig.js');
+
+let Twitter = new twit(twitConfig);
+
+/**
+ * Create HTTP server.
+ */
+
+http.listen(1337, function(){
+    console.log('listening on *:1337');
+});
+
+io.on('connection', function(socket){
+    console.log('connect');
+    socket.on('twitterSearch', function(search){
+        Twitter.get('search/tweets', { q: `${search} since:2011-07-11`, count: 1 }, function(err, data, response) {
+            console.log(data)
+        })
+    })
+});

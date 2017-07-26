@@ -1,0 +1,38 @@
+body {
+    padding: 50px;
+}
+
+a {
+    color: #00B7FF;
+}
+
+button{
+    margin-bottom: 1rem;
+}
+
+section {
+    min-height: 35vh;
+}
+
+#marvTweets{
+    min-height: 300px;
+}
+
+.sectionText{
+    font-weight: 600;
+    padding-bottom: 2rem;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%
+}
+
+.row > div {
+    padding-top: 2rem !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

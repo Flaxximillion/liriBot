@@ -1,0 +1,69 @@
+extends layout
+
+block content
+    h1= title
+    p Welcome to #{title}
+
+    //Play with Marvin
+
+    section#postTweet.z-depth-2
+        .row
+            //Post a Marvin quote
+            .col.s4.offset-s1
+                .sectionText.center-align Post a random Marvin, the Paranoid Android quote to @TheParanoidMarv
+                button#twitterPost.btn.waves-effect.waves-light Post something "uplifting"
+                #submittedTweet.scale-transition
+
+            //See what Marvin's been saying
+            .col.s4.offset-s2
+                .sectionText.center-align What's Marvin been saying?
+                #marvTweets.scale-transition
+
+    //Search Twitter/Spotify/OMDB
+
+    section#inputs.z-depth-2
+        .row#inputRow
+            div.sectionText.col.s12.center-align Search these services
+
+            //Search Twitter
+            .col.s12.xl3
+                div
+                    input(
+                        type='text'
+                        name='twitterSearch'
+                        id='twitterInput'
+                        placeholder='Search for Tweet text'
+                        )
+                    button#twitterSearch.search.btn.waves-effect.waves-light(value='twitterInput') Send
+                #tweets.scale-transition
+
+            //Search Spotify
+            .col.s12.offset-xl1.xl3
+                div
+                    input(
+                        type='text'
+                        name='spotifySearch'
+                        id='spotifyInput'
+                        placeholder='Search for a song'
+                        )
+                    button#spotifySearch.search.btn.waves-effect.waves-light(value='spotifyInput') Send
+                #spotify
+
+            //Search OMDB
+            .col.s12.offset-xl1.xl3
+                div
+                    input(
+                        type='text'
+                        name='movieSearch'
+                        id='movieInput'
+                        placeholder='Search for a movie'
+                    )
+                    button#movieSearch.search.btn.waves-effect.waves-light(value='movieInput') Send
+                #movies
+    script(
+        id='twitter-wjs'
+        type='text/javascript'
+        async defer src='//platform.twitter.com/widgets.js'
+    )
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js')
+    script(src='./javascript/logic.js')
